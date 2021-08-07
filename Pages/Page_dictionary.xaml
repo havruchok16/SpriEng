@@ -1,0 +1,73 @@
+﻿<Page x:Class="Project.Pages.Page_dictionary"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1000"
+      Title="Page_dictionary" x:Name="PageDictionary" Loaded="PageDictionary_Loaded">
+    <Page.Resources>
+        <ResourceDictionary Source="/Dictionaries/Dictionary_dictionary.xaml"/>
+    </Page.Resources>
+
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" Margin="40 25 0 0" HorizontalAlignment="Left">
+            <TextBlock x:Name="SectionsText" Text="This is Your Dictionary.." Margin="40 10 0 10" FontSize="20" 
+                       MouseEnter="SectionsText_MouseEnter" MouseLeave="SectionsText_MouseLeave"/>
+            <StackPanel Orientation="Horizontal" Margin="0 10">
+                <TextBox Text="Word" Style="{StaticResource EngRuWord}"/>
+                <TextBox Text="Translate" Style="{StaticResource EngRuWord}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock x:Name="EngFirstWord" Style="{StaticResource EngRuOtherWord}" />
+                <TextBlock x:Name="RuFirstWord" Style="{StaticResource EngRuOtherWord}"/>
+            </StackPanel>
+            <ScrollViewer CanContentScroll="True" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
+                <StackPanel Orientation="Horizontal" ScrollViewer.CanContentScroll="True" Height="540">
+                    <TextBlock x:Name="EngWord" Style="{StaticResource EngRuOtherWord}"/>
+                    <TextBlock x:Name="RuWord" Style="{StaticResource EngRuOtherWord}"/>
+                </StackPanel>
+            </ScrollViewer>
+
+            <!--<ListView x:Name="listViewWord">
+                    <ListView.View>
+                        <GridView> 
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=engList}" 
+                              Header="Word" Width="150"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=ruList}" 
+                              Header="Translate" Width="150"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>-->
+        </StackPanel>
+        <Grid Grid.Column="1" Margin="0 70 0 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.15*"/>
+                <RowDefinition Height="0.15*"/>
+                <RowDefinition Height="0.15*"/>
+                <RowDefinition Height="0.15*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Horizontal" >
+                <TextBox x:Name="Find_word_textbox" Style="{StaticResource Input}" PreviewTextInput="LettersOnly"/>
+                <Button x:Name="Find_word" Content="Find" Style="{StaticResource ButtonWord}" Click="Find_word_Click" />
+            </StackPanel>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" >
+                <TextBox x:Name="Ru_word_textbox" Style="{StaticResource Input}" PreviewTextInput="LettersOnly"/>
+                <TextBlock Text="Russian" VerticalAlignment="Center" Margin="30 0 0 0"/>
+            </StackPanel>
+            <StackPanel Grid.Row="2" Orientation="Horizontal" >
+                <TextBox x:Name="Eng_word_textbox" Style="{StaticResource Input}" PreviewTextInput="LettersOnly"/>
+                <TextBlock Text="English" VerticalAlignment="Center" Margin="32 0 0 0"/>
+            </StackPanel>
+            <Button Grid.Row="3" x:Name="Add_word" Content="Add this Word" Style="{StaticResource ButtonWord}" Width="200" Click="Add_word_Click" />
+            <Image Grid.Row="4" VerticalAlignment="Bottom" Margin="0 20 0 0" Source="/Resources/page_dictionary.png"/>
+
+        </Grid>
+    </Grid>
+</Page>

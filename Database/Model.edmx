@@ -1,0 +1,468 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище SpriengModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Dictionary">
+          <Key>
+            <PropertyRef Name="DictionaryId" />
+          </Key>
+          <Property Name="DictionaryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="Word" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Translate" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Info">
+          <Key>
+            <PropertyRef Name="ProgressId" />
+          </Key>
+          <Property Name="ProgressId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="Langlevel" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="TextCount" Type="int" />
+          <Property Name="RuleCount" Type="int" />
+          <Property Name="WordCount" Type="int" />
+        </EntityType>
+        <EntityType Name="Progress">
+          <Key>
+            <PropertyRef Name="ProgrId" />
+          </Key>
+          <Property Name="ProgrId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProgressId" Type="int" />
+          <Property Name="TextId" Type="int" />
+          <Property Name="RuleId" Type="int" />
+          <Property Name="IsComplited" Type="bit" />
+        </EntityType>
+        <EntityType Name="Rule">
+          <Key>
+            <PropertyRef Name="RuleId" />
+          </Key>
+          <Property Name="RuleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LangLevel" Type="nvarchar" MaxLength="20" />
+          <Property Name="RuleTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Rule" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Text">
+          <Key>
+            <PropertyRef Name="TextId" />
+          </Key>
+          <Property Name="TextId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LangLevel" Type="nvarchar" MaxLength="20" />
+          <Property Name="TextTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RuText" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="EnText" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Word">
+          <Key>
+            <PropertyRef Name="WordId" />
+          </Key>
+          <Property Name="WordId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Word" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Translate" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <Association Name="Dictionary_UserId_FK">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Dictionary" Type="Self.Dictionary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Dictionary">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Info_UserId_FK">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Info" Type="Self.Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Info">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Progress_ProgressId_FK">
+          <End Role="Info" Type="Self.Info" Multiplicity="0..1" />
+          <End Role="Progress" Type="Self.Progress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Info">
+              <PropertyRef Name="ProgressId" />
+            </Principal>
+            <Dependent Role="Progress">
+              <PropertyRef Name="ProgressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Progress_RuleId_FK">
+          <End Role="Rule" Type="Self.Rule" Multiplicity="0..1" />
+          <End Role="Progress" Type="Self.Progress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rule">
+              <PropertyRef Name="RuleId" />
+            </Principal>
+            <Dependent Role="Progress">
+              <PropertyRef Name="RuleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Progress_TextId_FK">
+          <End Role="Text" Type="Self.Text" Multiplicity="0..1" />
+          <End Role="Progress" Type="Self.Progress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Text">
+              <PropertyRef Name="TextId" />
+            </Principal>
+            <Dependent Role="Progress">
+              <PropertyRef Name="TextId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище SpriengModelContainer">
+          <EntitySet Name="Dictionary" EntityType="Self.Dictionary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Info" EntityType="Self.Info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Progress" EntityType="Self.Progress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rule" EntityType="Self.Rule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Text" EntityType="Self.Text" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Word" EntityType="Self.Word" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="Dictionary_UserId_FK" Association="Self.Dictionary_UserId_FK">
+            <End Role="User" EntitySet="User" />
+            <End Role="Dictionary" EntitySet="Dictionary" />
+          </AssociationSet>
+          <AssociationSet Name="Info_UserId_FK" Association="Self.Info_UserId_FK">
+            <End Role="User" EntitySet="User" />
+            <End Role="Info" EntitySet="Info" />
+          </AssociationSet>
+          <AssociationSet Name="Progress_ProgressId_FK" Association="Self.Progress_ProgressId_FK">
+            <End Role="Info" EntitySet="Info" />
+            <End Role="Progress" EntitySet="Progress" />
+          </AssociationSet>
+          <AssociationSet Name="Progress_RuleId_FK" Association="Self.Progress_RuleId_FK">
+            <End Role="Rule" EntitySet="Rule" />
+            <End Role="Progress" EntitySet="Progress" />
+          </AssociationSet>
+          <AssociationSet Name="Progress_TextId_FK" Association="Self.Progress_TextId_FK">
+            <End Role="Text" EntitySet="Text" />
+            <End Role="Progress" EntitySet="Progress" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SpriengModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Dictionary">
+          <Key>
+            <PropertyRef Name="DictionaryId" />
+          </Key>
+          <Property Name="DictionaryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="Word" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Translate" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.Dictionary_UserId_FK" FromRole="Dictionary" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Info">
+          <Key>
+            <PropertyRef Name="ProgressId" />
+          </Key>
+          <Property Name="ProgressId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="Langlevel" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TextCount" Type="Int32" />
+          <Property Name="RuleCount" Type="Int32" />
+          <Property Name="WordCount" Type="Int32" />
+          <NavigationProperty Name="User" Relationship="Self.Info_UserId_FK" FromRole="Info" ToRole="User" />
+          <NavigationProperty Name="Progress" Relationship="Self.Progress_ProgressId_FK" FromRole="Info" ToRole="Progress" />
+        </EntityType>
+        <EntityType Name="Progress">
+          <Key>
+            <PropertyRef Name="ProgrId" />
+          </Key>
+          <Property Name="ProgrId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProgressId" Type="Int32" />
+          <Property Name="TextId" Type="Int32" />
+          <Property Name="RuleId" Type="Int32" />
+          <Property Name="IsComplited" Type="Boolean" />
+          <NavigationProperty Name="Info" Relationship="Self.Progress_ProgressId_FK" FromRole="Progress" ToRole="Info" />
+          <NavigationProperty Name="Rule" Relationship="Self.Progress_RuleId_FK" FromRole="Progress" ToRole="Rule" />
+          <NavigationProperty Name="Text" Relationship="Self.Progress_TextId_FK" FromRole="Progress" ToRole="Text" />
+        </EntityType>
+        <EntityType Name="Rule">
+          <Key>
+            <PropertyRef Name="RuleId" />
+          </Key>
+          <Property Name="RuleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LangLevel" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="RuleTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Rule1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Progress" Relationship="Self.Progress_RuleId_FK" FromRole="Rule" ToRole="Progress" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Text">
+          <Key>
+            <PropertyRef Name="TextId" />
+          </Key>
+          <Property Name="TextId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LangLevel" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TextTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RuText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EnText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Progress" Relationship="Self.Progress_TextId_FK" FromRole="Text" ToRole="Progress" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Dictionary" Relationship="Self.Dictionary_UserId_FK" FromRole="User" ToRole="Dictionary" />
+          <NavigationProperty Name="Info" Relationship="Self.Info_UserId_FK" FromRole="User" ToRole="Info" />
+        </EntityType>
+        <EntityType Name="Word">
+          <Key>
+            <PropertyRef Name="WordId" />
+          </Key>
+          <Property Name="WordId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Word1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Translate" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <Association Name="Dictionary_UserId_FK">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Dictionary" Type="Self.Dictionary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Dictionary">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Info_UserId_FK">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Info" Type="Self.Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Info">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Progress_ProgressId_FK">
+          <End Role="Info" Type="Self.Info" Multiplicity="0..1" />
+          <End Role="Progress" Type="Self.Progress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Info">
+              <PropertyRef Name="ProgressId" />
+            </Principal>
+            <Dependent Role="Progress">
+              <PropertyRef Name="ProgressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Progress_RuleId_FK">
+          <End Role="Rule" Type="Self.Rule" Multiplicity="0..1" />
+          <End Role="Progress" Type="Self.Progress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rule">
+              <PropertyRef Name="RuleId" />
+            </Principal>
+            <Dependent Role="Progress">
+              <PropertyRef Name="RuleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Progress_TextId_FK">
+          <End Role="Text" Type="Self.Text" Multiplicity="0..1" />
+          <End Role="Progress" Type="Self.Progress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Text">
+              <PropertyRef Name="TextId" />
+            </Principal>
+            <Dependent Role="Progress">
+              <PropertyRef Name="TextId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SpriengEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Dictionary" EntityType="Self.Dictionary" />
+          <EntitySet Name="Info" EntityType="Self.Info" />
+          <EntitySet Name="Progress" EntityType="Self.Progress" />
+          <EntitySet Name="Rule" EntityType="Self.Rule" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Text" EntityType="Self.Text" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <EntitySet Name="Word" EntityType="Self.Word" />
+          <AssociationSet Name="Dictionary_UserId_FK" Association="Self.Dictionary_UserId_FK">
+            <End Role="User" EntitySet="User" />
+            <End Role="Dictionary" EntitySet="Dictionary" />
+          </AssociationSet>
+          <AssociationSet Name="Info_UserId_FK" Association="Self.Info_UserId_FK">
+            <End Role="User" EntitySet="User" />
+            <End Role="Info" EntitySet="Info" />
+          </AssociationSet>
+          <AssociationSet Name="Progress_ProgressId_FK" Association="Self.Progress_ProgressId_FK">
+            <End Role="Info" EntitySet="Info" />
+            <End Role="Progress" EntitySet="Progress" />
+          </AssociationSet>
+          <AssociationSet Name="Progress_RuleId_FK" Association="Self.Progress_RuleId_FK">
+            <End Role="Rule" EntitySet="Rule" />
+            <End Role="Progress" EntitySet="Progress" />
+          </AssociationSet>
+          <AssociationSet Name="Progress_TextId_FK" Association="Self.Progress_TextId_FK">
+            <End Role="Text" EntitySet="Text" />
+            <End Role="Progress" EntitySet="Progress" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище SpriengModelContainer" CdmEntityContainer="SpriengEntities">
+          <EntitySetMapping Name="Dictionary">
+            <EntityTypeMapping TypeName="SpriengModel.Dictionary">
+              <MappingFragment StoreEntitySet="Dictionary">
+                <ScalarProperty Name="DictionaryId" ColumnName="DictionaryId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Word" ColumnName="Word" />
+                <ScalarProperty Name="Translate" ColumnName="Translate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Info">
+            <EntityTypeMapping TypeName="SpriengModel.Info">
+              <MappingFragment StoreEntitySet="Info">
+                <ScalarProperty Name="ProgressId" ColumnName="ProgressId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Langlevel" ColumnName="Langlevel" />
+                <ScalarProperty Name="TextCount" ColumnName="TextCount" />
+                <ScalarProperty Name="RuleCount" ColumnName="RuleCount" />
+                <ScalarProperty Name="WordCount" ColumnName="WordCount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Progress">
+            <EntityTypeMapping TypeName="SpriengModel.Progress">
+              <MappingFragment StoreEntitySet="Progress">
+                <ScalarProperty Name="ProgrId" ColumnName="ProgrId" />
+                <ScalarProperty Name="ProgressId" ColumnName="ProgressId" />
+                <ScalarProperty Name="TextId" ColumnName="TextId" />
+                <ScalarProperty Name="RuleId" ColumnName="RuleId" />
+                <ScalarProperty Name="IsComplited" ColumnName="IsComplited" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rule">
+            <EntityTypeMapping TypeName="SpriengModel.Rule">
+              <MappingFragment StoreEntitySet="Rule">
+                <ScalarProperty Name="RuleId" ColumnName="RuleId" />
+                <ScalarProperty Name="LangLevel" ColumnName="LangLevel" />
+                <ScalarProperty Name="RuleTitle" ColumnName="RuleTitle" />
+                <ScalarProperty Name="Rule1" ColumnName="Rule" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="SpriengModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Text">
+            <EntityTypeMapping TypeName="SpriengModel.Text">
+              <MappingFragment StoreEntitySet="Text">
+                <ScalarProperty Name="TextId" ColumnName="TextId" />
+                <ScalarProperty Name="LangLevel" ColumnName="LangLevel" />
+                <ScalarProperty Name="TextTitle" ColumnName="TextTitle" />
+                <ScalarProperty Name="RuText" ColumnName="RuText" />
+                <ScalarProperty Name="EnText" ColumnName="EnText" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="SpriengModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Word">
+            <EntityTypeMapping TypeName="SpriengModel.Word">
+              <MappingFragment StoreEntitySet="Word">
+                <ScalarProperty Name="WordId" ColumnName="WordId" />
+                <ScalarProperty Name="Word1" ColumnName="Word" />
+                <ScalarProperty Name="Translate" ColumnName="Translate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

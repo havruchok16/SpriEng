@@ -1,0 +1,23 @@
+﻿<Page x:Class="Project.Pages.Page_level"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Project.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="400" d:DesignWidth="500"
+      Title="Page_level">
+    <Page.Resources>
+        <ResourceDictionary Source="/Dictionaries/Dictionary_authorization.xaml"/>
+    </Page.Resources>
+    <StackPanel Height="400" Background="White">
+        <TextBlock x:Name="Lang_level" Text="CHOOSE YOUR LANGUAGE LEVEL" Style="{StaticResource SectionText2}"
+                   MouseEnter="Lang_level_MouseEnter" MouseLeave="Lang_level_MouseLeave" />
+        <Button x:Name="Beginner" Content="Beginner" Style="{StaticResource RegisterButtonStyle}" Click="Beginner_Click" />
+        <TextBlock Text="Повседневные выражения, основные фразы, самопредставление" Style="{StaticResource LanguageLevel}"/>
+        <Button x:Name="Elementary" Content="Elementary" Style="{StaticResource RegisterButtonStyle}" Click="Elementary_Click"/>
+        <TextBlock Text="Выражение базовых потребностей, понимание писем, быстрое чтение" Style="{StaticResource LanguageLevel}"/>
+        <Button x:Name="Intermediate" Content="Intermediate" Style="{StaticResource RegisterButtonStyle}" Click="Intermediate_Click"/>
+        <TextBlock Text="Объяснение ситуаций, понимание инструкций, свободное общение" Style="{StaticResource LanguageLevel}"/>
+    </StackPanel>
+</Page>

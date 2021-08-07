@@ -1,0 +1,54 @@
+﻿<Page x:Class="Project.Pages.Page_texts"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Project"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1000"
+      Title="Page_texts">
+    <Page.Resources>
+        <ResourceDictionary Source="/Dictionaries/Dictionary_texts.xaml"/>
+    </Page.Resources>
+    <Grid Background="White">
+        <Button x:Name="Back_to_Home" Content="ᐸ" Style="{StaticResource NavButtonStyle}" Click="Back_to_Home_Click"/>
+        <StackPanel Margin="40 25 0 0">
+            <TextBlock x:Name="SectionsText" Text="Choose the Text depending on the Level.." Style="{StaticResource SectionsText}" MouseEnter="SectionsText_MouseEnter" MouseLeave="SectionsText_MouseLeave" ></TextBlock>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.4*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <TextBox Text="Beginner" Style="{StaticResource LanguageText}"/>
+                    <Button x:Name="ButtonText1" Content="My day" Style="{StaticResource ButtonStyle}" Click="ButtonText1_Click"/>
+                    <Button x:Name="ButtonText2" Content="My name is John" Style="{StaticResource ButtonStyle}" Click="ButtonText2_Click"/>
+                    <Button x:Name="ButtonText3" Content="Our Vacation" Style="{StaticResource ButtonStyle}" Click="ButtonText3_Click"/>
+                    <TextBox Text="Elementary" Style="{StaticResource LanguageText}"/>
+                    <Button x:Name="ButtonText4" Content="Letter to a Friend" Style="{StaticResource ButtonStyle}" Click="ButtonText4_Click"/>
+                    <Button x:Name="ButtonText5" Content="At school" Style="{StaticResource ButtonStyle}" Click="ButtonText5_Click"/>
+                    <Button x:Name="ButtonText6" Content="Airport" Style="{StaticResource ButtonStyle}" Click="ButtonText6_Click"/>
+                    <TextBox Text="Intermediate" Style="{StaticResource LanguageText}"/>
+                    <Button x:Name="ButtonText7" Content="Work in the morning" Style="{StaticResource ButtonStyle}" Click="ButtonText7_Click"/>
+                    <Button x:Name="ButtonText8" Content="Internet" Style="{StaticResource ButtonStyle}" Click="ButtonText8_Click"/>
+                    <Button x:Name="ButtonText9" Content="Amazon adventure" Style="{StaticResource ButtonStyle}" Click="ButtonText9_Click"/>
+                    <Button x:Name="ButtonComplited" Content="I read this Text!" Style="{StaticResource ButtonStyle2}" Click="ButtonComplited_Click" />
+                </StackPanel>
+
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Row="0" Style="{StaticResource BorderInfo}">
+                        <TextBlock x:Name="EnText" Style="{StaticResource BordersText}"></TextBlock>
+                    </Border>
+                    <Border Grid.Row="1" Style="{StaticResource BorderInfo}">
+                        <TextBlock x:Name="RuText" Style="{StaticResource BordersText}"></TextBlock>
+                    </Border>
+                </Grid>
+                
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Page>

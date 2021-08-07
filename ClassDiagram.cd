@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Project.Data.CurrentUser">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\CurrentUser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Project.Data.Profile">
+    <Position X="0.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAIAAAAQAAAAABAACAAAAAAAAQBAAAAAA=</HashCode>
+      <FileName>Data\Profile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Project.Data.ProgressModel">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Data\ProgressModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Project.Database.Dictionary">
+    <Position X="4" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEBAAAAAAAAAAAgAAAAAAgAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Database\Dictionary.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Project.Database.Info">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADAAAAAACAIAAAAAAAAAgBAAAAAAAAAAAABACAAAA=</HashCode>
+      <FileName>Database\Info.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Project.Database.Progress">
+    <Position X="5.75" Y="3.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="Project.Database.Progress.ParametrType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Database\Progress.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAEEAIAAAAAAEAAAAAAAAAAAAAAAACEAAAgA=</HashCode>
+      <FileName>Database\Progress.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Project.Database.Rule">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABCAACAAAAAAAAAAACAAgA=</HashCode>
+      <FileName>Database\Rule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Project.Database.SpriengEntities">
+    <Position X="2.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEBAAAAAEAAAAAAAAAAAAAAEAAABAAAAAAAGECAAAA=</HashCode>
+      <FileName>Database\Model.Context.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Project.Database.Text">
+    <Position X="4" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAQAAAAAAAEAAAAAACAAAAAAAAAAACAAAQ=</HashCode>
+      <FileName>Database\Text.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Project.Database.User">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAABAACAQAQAEAAAAA=</HashCode>
+      <FileName>Database\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Project.Database.Word">
+    <Position X="2.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAIAAEAAAAAAA=</HashCode>
+      <FileName>Database\Word.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Project.App">
+    <Position X="0.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Project.Pages.Page_dictionary">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgIAQAAAAAAAAAIAAAAIAYQAAAAAAACAAAAAA=</HashCode>
+      <FileName>Pages\Page_dictionary.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Project.Pages.Page_grammar" Collapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABIAAAIIQAAAAAAAAIEIgAAIAAAEAAAAAiQAIAAA=</HashCode>
+      <FileName>Pages\Page_grammar.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Project.Pages.Page_home">
+    <Position X="14.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAEAgAgAEAAAAACAIACAAIAAAAAAAAAACAAAAIA=</HashCode>
+      <FileName>Pages\Page_home.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Project.Pages.Page_level">
+    <Position X="14.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAIAACUAAAAAAABAAAwAAAAAAAAAAA=</HashCode>
+      <FileName>Pages\Page_level.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Project.Pages.Page_login">
+    <Position X="12.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Pages\Page_login.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Project.Pages.Page_profile">
+    <Position X="11" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAAAAIAAQAAgAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Pages\Page_profile.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Project.Pages.Page_progress">
+    <Position X="11" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Pages\Page_progress.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Project.Pages.Page_register">
+    <Position X="16.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAQAAAAAAAAAAAAAAACAAABAIAAAAAAAA=</HashCode>
+      <FileName>Pages\Page_register.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Project.Pages.Page_texts" Collapsed="true">
+    <Position X="12.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>JBAAAIAAAoIAAAACAAAAIAAAQAIBAAAAIAAACAAAAAA=</HashCode>
+      <FileName>Pages\Page_texts.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Project.Pages.Page_words">
+    <Position X="12.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAgAAAAAAAAAEAAYAAgAAAAQAACIAAACAAAAAA=</HashCode>
+      <FileName>Pages\Page_words.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Project.Windows.MainWindow">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAEAIAAAMAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Windows\MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Project.Windows.MainWindow2">
+    <Position X="9.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAFCBAAAAAAAAABAAAAACAAAAAAAIAIA=</HashCode>
+      <FileName>Windows\MainWindow2.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Project.Windows.Window_error">
+    <Position X="9.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Windows\Window_error.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

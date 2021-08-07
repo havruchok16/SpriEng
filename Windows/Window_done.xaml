@@ -1,0 +1,23 @@
+﻿<Window x:Class="Project.Windows.Window_done"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project.Windows"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True"
+        Title="Window_done" Height="500" Width="600" Icon="/Resources/icon.png">
+    <Window.Resources>
+        <ResourceDictionary Source="/Dictionaries/Dictionary_menu.xaml"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.2*"/>
+        </Grid.RowDefinitions>
+        <Image Source="/Resources/Done.png" Margin="0 10 0 0" Grid.Row="0" VerticalAlignment="Center"/>
+        <TextBlock x:Name="DoneText" Text="Данные успешно сохранены.." Grid.Row="1" Style="{StaticResource ErrorDoneTextBlock}"/>
+        <Button Content="ОК!" Grid.Row="2" Style="{StaticResource DoneButton}" Click="DoneButton_Click" />
+    </Grid>
+</Window>

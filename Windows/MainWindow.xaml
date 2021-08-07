@@ -1,0 +1,37 @@
+﻿<Window WindowStartupLocation="CenterScreen" x:Class="Project.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:wpfanimated="http://wpfanimatedgif.codeplex.com"
+        xmlns:local="clr-namespace:Project"
+        mc:Ignorable="d"
+        Title="SpriEng" MinHeight="800" Height="800" MinWidth="1400" Width="1400" Icon="/Resources/icon.png">
+    <Window.Resources>
+        <ResourceDictionary Source="/Dictionaries/Dictionary_authorization.xaml"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                <GradientStop Color="#FFFFB3B3"/>
+                <GradientStop Color="#FFA6DADD" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <Border Visibility="Hidden" x:Name="Border_content" Style="{StaticResource BorderContent}">
+            <StackPanel>
+                <Image Width="150" HorizontalAlignment="Left" Source="/Resources/logo.png"/>
+                <Grid>
+                    <Button x:Name="Button_register" Content="REGISTER" Style="{StaticResource RightButtonStyle}" Click="Button_register_Click"/>
+                    <Button x:Name="Button_login" Content="LOGIN" Style="{StaticResource CheckedLeftButtonStyle}" Click="Button_login_Click"/>
+                </Grid>
+                <Frame x:Name="Window_register_login" NavigationUIVisibility="Hidden" Source="/Pages/Page_login.xaml"/>
+            </StackPanel>
+        </Border>
+        <Image x:Name="load" Width="400"
+               wpfanimated:ImageBehavior.AnimatedSource="/Resources/loading.gif"
+               wpfanimated:ImageBehavior.RepeatBehavior="1"
+               wpfanimated:ImageBehavior.AnimateInDesignMode="False"
+               wpfanimated:ImageBehavior.AutoStart="True"/>
+    </Grid>
+</Window>

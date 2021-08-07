@@ -1,0 +1,29 @@
+﻿<Page x:Class="Project.Pages.Page_register"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Project.Validation"
+      mc:Ignorable="d" 
+      d:DesignHeight="400" d:DesignWidth="400"
+      Title="Page_register">
+    <Page.DataContext>
+        <local:Validation/>
+    </Page.DataContext>
+    <Page.Resources>
+        <ResourceDictionary Source="/Dictionaries/Dictionary_authorization.xaml"/>
+    </Page.Resources>
+    <StackPanel Height="400">
+        <TextBlock Text="REGISTER" Style="{StaticResource SectionText}" />
+        <TextBlock Text="USERNAME" Style="{StaticResource Placeholder}" />
+        <TextBox x:Name="Register_username" Text="{Binding Username, ValidatesOnExceptions=True, 
+            UpdateSourceTrigger=PropertyChanged}" Validation.ErrorTemplate="{StaticResource ErrorValidation}"/>
+        <TextBlock Text="LOGIN" Style="{StaticResource Placeholder}" />
+        <TextBox Name="Register_login" Text="{Binding Login, ValidatesOnExceptions=True, 
+            UpdateSourceTrigger=PropertyChanged}" Validation.ErrorTemplate="{StaticResource ErrorValidation}"/>
+        <TextBlock Text="PASSWORD" Style="{StaticResource Placeholder}" />
+        <PasswordBox x:Name="Register_password"/>
+        <Button x:Name="Button_create_account" Content="CREATE ACCOUNT" Style="{StaticResource RegisterButtonStyle}" 
+                Click="Button_create_account_Click" />
+    </StackPanel>
+</Page>
